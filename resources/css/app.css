@@ -23,3 +23,19 @@
     --color-primary-900: #021031;
     --color-primary-950: #010B22;
 }
+
+header.scrolled {
+    @apply shadow-lg;
+}
+
+.nav-menu {
+    @apply hidden md:flex;
+}
+
+.nav-menu.show {
+    @apply flex;
+}
+
+.nav-menu a {
+    @apply w-full md:p-0 md:w-auto;
+}
