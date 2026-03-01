@@ -1,0 +1,83 @@
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 100px;
+}
+
+.logo {
+  font-family: "Belgrano", serif;
+  font-size: 30px;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.btn-group {
+  display: flex;
+  gap: 24px;
+}
+
+.btn-main {
+  padding: 12px 8px;
+  background-color: #3A73F8;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.btn-outline {
+  padding: 12px 8px;
+  border: 1px solid #3A73F8;
+  color: #3A73F8;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.hero-content {
+  width: 40%;
+}
+
+.hero-img {
+  width: 40%;
+}
+
+.tagline {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.deskripsi {
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
+.hero-action {
+  display: flex;
+  gap: 28px;
+}
