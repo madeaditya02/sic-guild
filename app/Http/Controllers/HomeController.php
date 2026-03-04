@@ -98,4 +98,12 @@ class HomeController extends Controller
         ];
         return view('home', ['posts' => $posts]);
     }
+    public function stories()
+    {
+        return view('stories.index');
+    }
+    public function detailPost()
+    {
+        return view('stories.detail-post');
+    }
 }

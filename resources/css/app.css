@@ -24,18 +24,35 @@
     --color-primary-950: #010B22;
 }
 
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
 header.scrolled {
     @apply shadow-lg;
 }
 
-.nav-menu {
+.nav-menu,
+.auth-group {
     @apply hidden md:flex;
 }
 
-.nav-menu.show {
+.nav-menu.show,
+.auth-group.show {
     @apply flex;
 }
 
 .nav-menu a {
     @apply w-full md:p-0 md:w-auto;
+}
+
+.auth-menu {
+    @apply hidden;
+}
+
+.auth-menu.show {
+    @apply block;
 }
