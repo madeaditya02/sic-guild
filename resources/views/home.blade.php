@@ -11,8 +11,13 @@
   <title>Home - Perspectra</title>
 </head>
 <body>
-  <header class="flex justify-between items-center px-6 md:px-25 py-6 sticky top-0 bg-white">
+  <header class="flex justify-between items-center px-6 md:px-25 py-6 bg-white fixed top-0 left-0 right-0">
     <h2 class="text-3xl font-belgrano">Perspectra</h2>
+    <button class="nav-toggle md:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
     <nav class="nav-menu hidden md:flex items-center gap-6 font-nunito">
       <a href="/">Home</a>
       <a href="/posts">Stories</a>
@@ -26,14 +31,9 @@
         Sign Up
       </a>
     </div>
-    <button class="nav-toggle md:hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
   </header>
 
-  <main class="font-nunito">
+  <main class="font-nunito mt-20">
     <section id="hero" class="mt-8 md:mt-0 px-6 md:px-32 flex justify-between items-center">
       <div class="w-full md:w-[40%]">
         <h1 class="text-3xl md:text-5xl font-bold">Stories That Shape How We See</h1>
