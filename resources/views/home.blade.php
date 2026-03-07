@@ -7,12 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Belgrano&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  @vite(['resources/css/app.css'])
+  @vite(['resources/css/app.css', 'resources/js/script.js'])
   <title>Home - Perspectra</title>
 </head>
 <body>
   <header class="flex justify-between items-center px-6 md:px-25 py-6 bg-white fixed top-0 left-0 right-0 flex-wrap md:flex-nowrap">
-    <h2 class="text-3xl font-belgrano">Perspectra</h2>
+    <h2 class="logo text-3xl font-belgrano">Perspectra</h2>
     <button class="nav-toggle md:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
