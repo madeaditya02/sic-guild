@@ -11,7 +11,7 @@
   <title>Home - Perspectra</title>
 </head>
 <body>
-  <header class="flex justify-between items-center px-6 md:px-25 py-6 bg-white fixed top-0 left-0 right-0 flex-wrap md:flex-nowrap">
+  <header class="flex justify-between items-center px-6 md:px-25 py-6 bg-white fixed top-0 left-0 right-0 flex-wrap md:flex-nowrap transition">
     <h2 class="logo text-3xl font-belgrano">Perspectra</h2>
     <button class="nav-toggle md:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9">

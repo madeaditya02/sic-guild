@@ -18,11 +18,17 @@ tombolNav.addEventListener("click", function() {
   }
 })
 
+let posisiScroll = window.scrollY
 document.addEventListener('scroll', function() {
   const header = document.querySelector('header')
-  if (window.scrollY > 0) {
-    header.classList.add('shadow-lg')
-  } else {
-    header.classList.remove('shadow-lg')
+  if (posisiScroll < window.scrollY) {
+    header.classList.add('-translate-y-full') // Geser ke atas sampai hilang
+    header.classList.remove('shadow-lg') // Hapus shadownya
+    posisiScroll = window.scrollY
+  } else if (posisiScroll > window.scrollY) {
+    header.classList.add('shadow-lg') // Tambah shadownya
+    header.classList.remove('-translate-y-full') // Geser ke bawah sampai muncul
+    posisiScroll = window.scrollY
   }
+  // class tailwind translate-y-full menggeser elemennya ke atas/bawah secara full (kalo - ke atas)
 })
