@@ -38,7 +38,7 @@
       <img src="/assets/view.jpg" alt="" class="w-full max-h-70 object-cover">
       <h1 class="text-4xl font-bold mt-5 text-center">Quiet Shifts Changing How We Work</h1>
       <div class="flex gap-2.5 items-stretch justify-center mt-2">
-        <div>By <a href="" class="text-primary">Sarah Mitchell</a></div>
+        <div>By <span href="#" class="text-primary">Sarah Mitchell</span></div>
         <div class="divider w-px bg-black"></div>
         <div>12 Februari 2026</div>
         <div class="divider w-px bg-black"></div>
@@ -68,7 +68,7 @@
           We are moving away from systems built purely for efficiency and toward environments that value reflection, flexibility, and trust. And in doing so, we are discovering that progress doesn’t always come from doing more — sometimes, it comes from seeing differently.</p>
         </p>
       </div>
-      <a href="#" class="inline-flex gap-2 items-center text-primary">
+      <a href="/stories" class="inline-flex gap-2 items-center text-primary">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
         </svg>

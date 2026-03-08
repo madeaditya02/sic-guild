@@ -47,7 +47,7 @@
         <article class="mt-6 pb-3 w-225 max-w-full border-b border-[#dddddd]">
           <h2 class="text-2xl font-bold">Quiet Shifts Changing How We Work</h2>
           <div class="flex gap-2.5 items-stretch mt-2.5 text-[#777777]">
-            <div>By <a href="" class="text-primary">Sarah Mitchell</a></div>
+            <div>By <span class="text-primary">Sarah Mitchell</span></div>
             <div class="divider w-px bg-[#777777]"></div>
             <div>12 Februari 2026</div>
             <div class="divider w-px bg-[#777777]"></div>

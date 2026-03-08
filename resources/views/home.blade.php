@@ -41,10 +41,10 @@
           A collection of thoughtful stories and perspectives that help you understand the world with greater clarity, empathy, and meaning
         </p>
         <div class="flex gap-4 md:gap-7">
-          <a href="#" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
+          <a href="/login" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
             Start Exploring
           </a>
-          <a href="#" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg border border-primary text-primary hover:bg-primary hover:text-white">
+          <a href="/dashboard" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg border border-primary text-primary hover:bg-primary hover:text-white">
             Share Your Story
           </a>
         </div>
