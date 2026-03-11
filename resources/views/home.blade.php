@@ -40,7 +40,7 @@
         <p class="mt-4 mb-8 md:text-2xl">
           A collection of thoughtful stories and perspectives that help you understand the world with greater clarity, empathy, and meaning
         </p>
-        <div class="flex gap-4 md:gap-7">
+        <div class="flex gap-4 md:gap-7 items-start">
           <a href="/login" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
             Start Exploring
           </a>
