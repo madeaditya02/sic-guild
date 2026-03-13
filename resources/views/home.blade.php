@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Home')
+
 @section('content')
   <main class="font-nunito">
     <section id="hero" class="mt-8 md:mt-0 px-6 md:px-32 flex justify-between items-center">
@@ -9,12 +11,8 @@
           A collection of thoughtful stories and perspectives that help you understand the world with greater clarity, empathy, and meaning
         </p>
         <div class="flex gap-4 md:gap-7 items-start">
-          <a href="/login" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
-            Start Exploring
-          </a>
-          <a href="/dashboard" class="px-3 py-2 md:px-4.5 md:py-3 md:text-xl rounded-lg border border-primary text-primary hover:bg-primary hover:text-white">
-            Share Your Story
-          </a>
+          <x-button size='large'>Start Exploring</x-button>
+          <x-button size='large' variant='outline'>Share Your Story</x-button>
         </div>
       </div>
       <img src="/assets/hero.png" alt="" class="hidden md:block w-[40%]">
@@ -35,7 +33,7 @@
               <img src="{{ $post['author']['photo'] }}" alt="" class="size-8 rounded-full">
               <div>
                 <h4 class="text-[12px]">{{ $post['author']['name'] }}</h4>
-                <p class="text-[8px] text-[#6666]">2 months ago</p>
+                <p class="text-[8px] text-[#6666]">{{ $post['created_at']->diffForHumans() }}</p>
               </div>
             </div>
             <p class="my-2.5">

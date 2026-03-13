@@ -6,9 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{-- Untuk yang nanyain masalah icon di tab --}}
+  {{-- <link rel="icon" type="image/x-icon" href="/assets/user.jpg"> --}}
   <link href="https://fonts.googleapis.com/css2?family=Belgrano&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   @vite(['resources/css/app.css', 'resources/js/home.js'])
-  <title>Home - Perspectra</title>
+  <title>@yield('title') - Perspectra</title>
 </head>
 <body>
   <header class="flex justify-between items-center px-6 md:px-25 py-6 sticky top-0 bg-white flex-wrap md:flex-nowrap z-30">
@@ -21,15 +23,10 @@
     <nav class="nav-menu md:items-center gap-6 font-nunito bg-white w-full md:w-auto shrink-0 flex-col md:flex-row items-start mt-5 md:mt-0">
       <a href="/">Home</a>
       <a href="/stories">Stories</a>
-      <a href="/dashboard/create">Write</a>
     </nav>
     <div class="auth-group gap-6 font-nunito w-full md:w-auto shrink-0 mt-5 md:mt-0">
-      <a href="/login" class="px-3 py-2 rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
-        Sign In
-      </a>
-      <a href="/register" class="px-3 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white">
-        Sign Up
-      </a>
+      <x-button>Sign In</x-button>
+      <x-button variant='outline'>Sign Up</x-button>
     </div>
   </header>
 
