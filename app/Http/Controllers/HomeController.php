@@ -96,7 +96,10 @@ class HomeController extends Controller
                 "created_at" => new Carbon("2026-02-26 16:55:12"),
             ],
         ];
-        return view('home', ['posts' => $posts]);
+        return view('home', [
+            'posts' => $posts,
+            'judul' => "SIC Guild"
+        ]);
     }
     public function stories()
     {
