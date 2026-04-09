@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-
         // membuat admin
         User::create([
             'name' => 'Admin',
@@ -25,5 +25,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'admin'
         ]);
+
+        $this->call([
+            CategorySeeder::class
+        ]);
+
+        Post::factory(12)->recycle(User::factory(4)->create())->create();
     }
 }
