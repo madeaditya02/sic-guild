@@ -25,8 +25,17 @@
       <a href="/stories">Stories</a>
     </nav>
     <div class="auth-group gap-6 font-nunito w-full md:w-auto shrink-0 mt-5 md:mt-0">
-      <x-button>Sign In</x-button>
-      <x-button variant='outline'>Sign Up</x-button>
+      @auth
+          <p>{{ Auth::user()->username }}</p>
+          <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="cursor-pointer">Logout</button>
+          </form>
+      @endauth
+      @guest
+        <x-button href="/login">Sign In</x-button>
+        <x-button href="/register" variant='outline'>Sign Up</x-button>
+      @endguest
     </div>
   </header>
 

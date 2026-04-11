@@ -1,4 +1,4 @@
-<a href="/login" @class([
+<a {{ $attributes }} @class([
   'rounded-lg border border-green-500',
   'px-3 py-2' => $size == 'regular',
   'px-3 py-2 md:px-4.5 md:py-3 md:text-xl' => $size == 'large',

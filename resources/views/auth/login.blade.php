@@ -16,16 +16,20 @@
   </header>
 
   <main class="font-nunito w-160 max-w-full mx-auto sm:shadow-lg px-6 sm:px-8 py-6">
-    <form action="">
+    <form action="{{ route('login.post') }}" method="POST">
+      @csrf
       <div class="mb-6">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter your username">
+        <input value="{{ old('username') }}" type="text" name="username" id="username" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter your username">
+        @error('username')
+            <p class="text-red-500">{{ $message }}</p>
+        @enderror
       </div>
       <div class="mb-6">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter your password">
       </div>
-      <button class="px-3 py-2 rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
+      <button type="submit" class="px-3 py-2 rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
         Log In
       </button>
     </form>

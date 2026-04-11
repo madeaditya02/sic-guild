@@ -10,18 +10,18 @@ document.querySelector('.nav-toggle').addEventListener('click', () => {
 })
 
 // Memunculkan/menghilangkan auth menu, hilangkan jika diklik luarnya (outside click)
-const authGroup = document.querySelector('.auth-group')
-function outsideClick(event) {
-  const popover = document.querySelector('.auth-group .auth-menu')
-  if (!(event.target == popover || popover.contains(event.target) || event.target == authGroup || authGroup.contains(event.target))) {
-    popover.classList.remove('show')
-  }
-}
-authGroup.addEventListener('click', (event) => {
-  const popover = document.querySelector('.auth-group .auth-menu')
-  event.preventDefault()
-  if (event.target != popover && !popover.contains(event.target)) {
-    document.querySelector('.auth-group .auth-menu').classList.toggle('show')
-    document.addEventListener('click', outsideClick)
-  }
-})
+// const authGroup = document.querySelector('.auth-group')
+// function outsideClick(event) {
+//   const popover = document.querySelector('.auth-group .auth-menu')
+//   if (!(event.target == popover || popover.contains(event.target) || event.target == authGroup || authGroup.contains(event.target))) {
+//     popover.classList.remove('show')
+//   }
+// }
+// authGroup.addEventListener('click', (event) => {
+//   const popover = document.querySelector('.auth-group .auth-menu')
+//   event.preventDefault()
+//   if (event.target != popover && !popover.contains(event.target)) {
+//     document.querySelector('.auth-group .auth-menu').classList.toggle('show')
+//     document.addEventListener('click', outsideClick)
+//   }
+// })

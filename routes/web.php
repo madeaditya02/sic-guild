@@ -13,5 +13,12 @@ Route::get('/dashboard/create', [PostController::class, 'create']);
 Route::get('/dashboard/edit', [PostController::class, 'edit']);
 
 Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
 Route::get('/register', [AuthController::class, 'register']);
+
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
+
 Route::get('/profile', [AuthController::class, 'profile']);
