@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Profile')
+@section('title', 'Edit User')
 @section('content')
   <main class="font-nunito">
     <section class="mt-8 px-6 md:px-25">

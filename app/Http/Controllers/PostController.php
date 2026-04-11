@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.index');
+        return view('dashboard.post.index');
     }
 
     /**
@@ -19,14 +20,46 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.create-post');
+        return view('dashboard.post.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        return view('dashboard.post.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Post $post)
     {
-        return view('dashboard.edit-post');
+        return view('dashboard.post.edit');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Post $post)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Post $post)
+    {
+        //
     }
 }

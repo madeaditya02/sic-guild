@@ -12,7 +12,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('posts', PostController::class);
     });
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
-    Route::post('/profile', [AuthController::class, 'profilePost'])->name('profile.post');
+    Route::put('/profile', [AuthController::class, 'profileUpdate'])->name('profile.update');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

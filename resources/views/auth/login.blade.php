@@ -12,7 +12,7 @@
 </head>
 <body>
   <header class="mt-2 sm:mt-12 flex justify-center items-center px-6 md:px-25 py-6 sticky top-0 bg-white flex-wrap md:flex-nowrap z-30">
-    <h1 class="text-3xl font-belgrano">Perspectra</h1>
+    <a href="{{ route('home') }}" class="text-3xl font-belgrano">Perspectra</a>
   </header>
 
   <main class="font-nunito w-160 max-w-full mx-auto sm:shadow-lg px-6 sm:px-8 py-6">
@@ -29,9 +29,12 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter your password">
       </div>
-      <button type="submit" class="px-3 py-2 rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
-        Log In
-      </button>
+      <div class="flex flex-col gap-2 justify-center items-center">
+        <button type="submit" class="px-3 py-2 w-full rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
+          Log In
+        </button>
+        <a href="{{ route('register') }}" class="text-primary-500 w-max">Don't have an account?</a>
+      </div>
     </form>
   </main>
   <footer class="px-4 my-12 text-center font-nunito text-[#999]">&copy; 2026 Perspectra. All rights reserved</footer>

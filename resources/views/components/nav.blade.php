@@ -2,10 +2,11 @@
     <a href="/">Home</a>
     <a href="/stories">Stories</a>
     @can('user-only')
-        <a href="/dashboard/post">Write</a>
+        <a href="/dashboard/posts">Write</a>
     @endcan
     @can('admin-only')
-        <a href="/dashboard/post">Manage Stories</a>
-        <a href="/dashboard/user">Manage Users</a>
+        <a href="/dashboard/categories">Manage Categories</a>
+        <a href="/dashboard/posts">Manage Stories</a>
+        <a href="/dashboard/users">Manage Users</a>
     @endcan
 </nav>

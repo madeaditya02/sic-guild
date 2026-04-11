@@ -23,8 +23,9 @@
     <x-nav></x-nav>
     <div class="auth-group gap-6 font-nunito w-full md:w-auto shrink-0 mt-5 md:mt-0">
       @auth
-          <p>{{ Auth::user()->username }}</p>
-          <form action="/logout" method="POST">
+          <a href="{{ route('profile') }}">{{ Auth::user()->username }}</a>
+          <div class="w-px h-5 bg-gray-300"></div>
+          <form action="/logout" method="POST" onsubmit="return confirm('Are you sure you want to logout?')">
             @csrf
             <button type="submit" class="cursor-pointer">Logout</button>
           </form>
