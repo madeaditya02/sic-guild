@@ -43,6 +43,11 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->posts()->count() > 0) {
+            return redirect()->route('dashboard.users.index')
+                ->with('error', 'Cannot delete user that has stories. Delete their stories first.');
+        }
+        
         if ($user->photo) {
             Storage::disk('public')->delete($user->photo);
         }

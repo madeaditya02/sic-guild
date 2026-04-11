@@ -14,11 +14,11 @@
       <h1 class="text-4xl font-bold mb-8">Create Category</h1>
 
       <form action="" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
+        <div class="col-span-full">
           <label for="name">Name</label>
           <input type="text" name="name" id="name" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter category name">
         </div>
-        <div>
+        <div class="col-span-full">
           <label for="icon">Icon</label>
           <input type="file" name="icon" id="icon" class="block w-full mt-2.5 px-3 py-2 border border-[#dddddd] rounded-lg file:bg-primary file:px-2 file:py-1 file:rounded-lg file:text-white file:mr-3">
         </div>

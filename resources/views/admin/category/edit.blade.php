@@ -14,11 +14,11 @@
       <h1 class="text-4xl font-bold mb-8">Edit Category</h1>
 
       <form action="" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
+        <div class="col-span-full">
           <label for="name">Name</label>
           <input type="text" name="name" id="name" value="Work" class="block w-full mt-2.5 px-5 py-3 border border-[#dddddd] rounded-lg" placeholder="Enter category name">
         </div>
-        <div>
+        <div class="col-span-full">
           <label for="icon">Icon</label>
           <div class="mt-2.5 mb-2 flex items-center gap-3">
             <img src="/assets/icon-work.png" alt="" class="size-10 object-contain rounded-lg border border-[#dddddd] p-1">
