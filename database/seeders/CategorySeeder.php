@@ -12,11 +12,13 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ["Teknologi", "Budaya", "Sosial", "Linkungan"];
+        $categories = ["Work", "Thinking", "Creativity", "Reflection"];
 
         foreach($categories as $categoryName) {
             Category::create([
-                "name" => $categoryName
+                "name" => $categoryName,
+                "description" => "lorem ipsum dolor sit amet",
+                "icon" => "path/icon.jpg"
             ]);
         }
     }

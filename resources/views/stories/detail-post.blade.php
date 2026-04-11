@@ -1,80 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Belgrano&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  @vite(['resources/css/app.css', 'resources/js/home.js'])
-  <title>Home - Perspectra</title>
-</head>
-<body>
-  <header class="flex justify-between items-center px-6 md:px-25 py-6 sticky top-0 bg-white flex-wrap md:flex-nowrap z-30">
-    <h2 class="text-3xl font-belgrano">Perspectra</h2>
-    <button class="nav-toggle md:hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+@extends('layouts.main')
+@section('title', $post->title)
+@section('content')
+<main class="font-nunito">
+  <section class="mt-8 px-6 w-180 mx-auto max-w-full">
+
+    <a href="{{ route('stories') }}" class="inline-flex gap-2 items-center text-primary text-sm mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+        stroke-width="1.5" stroke="currentColor" class="size-5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
       </svg>
-    </button>
-    <nav class="nav-menu md:items-center gap-6 font-nunito bg-white w-full md:w-auto shrink-0 flex-col md:flex-row items-start mt-5 md:mt-0">
-      <a href="/">Home</a>
-      <a href="/stories">Stories</a>
-      <a href="/dashboard/create">Write</a>
-    </nav>
-    <div class="auth-group gap-6 font-nunito w-full md:w-auto shrink-0 mt-5 md:mt-0">
-      <a href="/login" class="px-3 py-2 rounded-lg bg-primary border border-primary text-white hover:bg-primary-300">
-        Sign In
-      </a>
-      <a href="/register" class="px-3 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white">
-        Sign Up
+      Back to all stories
+    </a>
+
+    <img
+      src="{{ Storage::url($post->picture) }}"
+      alt="{{ $post->title }}"
+      class="w-full max-h-72 object-cover rounded-xl"
+    >
+
+    <h1 class="text-3xl md:text-4xl font-bold mt-3 text-center">{{ $post->title }}</h1>
+    <div class="flex gap-2.5 items-center justify-center mt-3 flex-wrap">
+      <img
+        src="{{ Storage::url($post->author->photo) }}"
+        alt="{{ $post->author->name }}"
+        class="size-8 rounded-full object-cover"
+      >
+      <span class="text-sm font-semibold text-primary">{{ $post->author->name }}</span>
+      <div class="w-px h-4 bg-gray-300"></div>
+      <span class="text-sm text-gray-500">{{ $post->created_at->format('d F Y') }}</span>
+      <div class="w-px h-4 bg-gray-300"></div>
+      <a
+        href="{{ route('stories') }}?category={{ $post->category_id }}"
+        class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full hover:bg-primary/20"
+      >
+        {{ $post->category->name }}
       </a>
     </div>
-  </header>
 
-  <main class="font-nunito">
-    <section class="mt-8 px-6 w-180 mx-auto max-w-full">
-      <img src="/assets/view.jpg" alt="" class="w-full max-h-70 object-cover">
-      <h1 class="text-4xl font-bold mt-5 text-center">Quiet Shifts Changing How We Work</h1>
-      <div class="flex gap-2.5 items-stretch justify-center mt-2">
-        <div>By <span href="#" class="text-primary">Sarah Mitchell</span></div>
-        <div class="divider w-px bg-black"></div>
-        <div>12 Februari 2026</div>
-        <div class="divider w-px bg-black"></div>
-        <div>Work</div>
+    <div class="mt-8 mb-6 prose prose-lg max-w-none text-gray-700 leading-relaxed whitespace-pre-line text-justify">
+      {{ $post->content }}
+    </div>
+
+  </section>
+
+  @if($related->isNotEmpty())
+    <section class="mt-12 px-6 md:px-25">
+      <h2 class="text-2xl font-bold">More from {{ $post->category->name }}</h2>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        @foreach($related as $item)
+          <article class="blog-card rounded-lg overflow-hidden shadow-lg relative">
+            <img
+              src="{{ Storage::url($item->picture) }}"
+              alt="{{ $item->title }}"
+              class="w-full h-36 object-cover"
+            >
+            <div class="bg-primary text-white px-4 py-1.5 absolute top-0 right-0 text-sm">
+              {{ $item->category->name }}
+            </div>
+            <div class="p-4">
+              <h3 class="text-xl font-bold line-clamp-2">{{ $item->title }}</h3>
+              <div class="flex gap-2 items-center mt-2">
+                <img
+                  src="{{ Storage::url($item->author->photo) }}"
+                  alt="{{ $item->author->name }}"
+                  class="size-8 rounded-full object-cover"
+                >
+                <div>
+                  <h4 class="text-[12px] font-semibold">{{ $item->author->name }}</h4>
+                  <p class="text-[10px] text-gray-400">{{ $item->created_at->diffForHumans() }}</p>
+                </div>
+              </div>
+              <p class="my-2.5 text-sm text-gray-600 line-clamp-3">{{ $item->content }}</p>
+              <a href="{{ route('stories.show', $item->id) }}"
+                class="inline-flex gap-1 items-center text-sm text-primary">
+                Read More
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        @endforeach
       </div>
-      <div class="mt-8 mb-4">
-        <p class="mt-4 first:mt-0">
-          Modern work didn’t change overnight.
-          It shifted quietly.
-        </p>
-        <p class="mt-4 first:mt-0">
-          There was no single moment when routines disappeared or when productivity stopped being measured by hours spent at a desk. Instead, change arrived gradually — through new tools, evolving expectations, and a growing awareness that meaningful work is not defined by repetition.
-        </p>
-        <p class="mt-4 first:mt-0">
-          Today, work is less about presence and more about contribution.
-        </p>
-        <p class="mt-4 first:mt-0">
-          People are redefining what it means to be productive. It’s no longer about how busy we appear, but about the clarity of our thinking and the impact of our efforts. Many are realizing that creativity, collaboration, and adaptability matter far more than rigid schedules.
-        </p>
-        <p class="mt-4 first:mt-0">
-          The quiet shift is this:
-        </p>
-        <p class="mt-4 first:mt-0">
-          Work is becoming human again.
-        </p>
-        <p class="mt-4 first:mt-0">
-          We are moving away from systems built purely for efficiency and toward environments that value reflection, flexibility, and trust. And in doing so, we are discovering that progress doesn’t always come from doing more — sometimes, it comes from seeing differently.</p>
-        </p>
-      </div>
-      <a href="/stories" class="inline-flex gap-2 items-center text-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
-        </svg>
-      Back to all post
-      </a>
-  </main>
-  <footer class="px-4 my-12 text-center font-nunito text-[#999]">&copy; 2026 Perspectra. All rights reserved</footer>
-</body>
-</html>
+    </section>
+  @endif
+
+  <section id="start-writing"
+    class="mx-6 md:mx-25 mt-12 bg-primary text-white px-4 py-6 md:p-10 rounded-2xl text-center">
+    <h2 class="font-bold text-[28px]">Your Perspective Matters</h2>
+    <p class="mb-5">
+      Every story carries a way of seeing the world. Share yours and be part of shaping how others understand it
+    </p>
+    <a href="{{ route('dashboard.posts.create') }}" class="px-3 py-2 rounded-lg border border-white">Start Writing</a>
+  </section>
+</main>
+@endsection

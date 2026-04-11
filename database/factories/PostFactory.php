@@ -21,7 +21,7 @@ class PostFactory extends Factory
         return [
             "title" => fake()->sentence(5),
             "picture" => fake()->imageUrl(800, 800),
-            "content" => fake()->paragraph(),
+            "content" => fake()->paragraph(20),
             "user_id" => User::factory(),
             "category_id" => Category::inRandomOrder()->first()->id
         ];
