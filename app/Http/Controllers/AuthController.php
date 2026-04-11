@@ -64,9 +64,9 @@ class AuthController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'name'    => 'required|string|max:100',
-            'username'=> 'required|string|max:50|unique:users,username,' . $user->id,
-            'photo'   => 'nullable|image|max:2048',
+            'name' => 'required|string|max:100',
+            'username' => 'required|string|max:50|unique:users,username,' . $user->id,
+            'photo' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->only('name', 'username');

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        // namenya nanti akan jadi (dashboard.posts.index) dan seterusnya sesuai dengan pakem resource route
         Route::resource('posts', PostController::class);
     });
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
@@ -25,7 +26,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('admin')->group(function() {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class)->only(['index', 'edit', 'update', 'destroy']);
         Route::resource('categories', CategoryController::class);
     });
 });
