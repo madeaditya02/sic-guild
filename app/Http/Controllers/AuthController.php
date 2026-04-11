@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -56,6 +57,30 @@ class AuthController extends Controller
     public function profile()
     {
         return view('auth.profile');
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'name'    => 'required|string|max:100',
+            'username'=> 'required|string|max:50|unique:users,username,' . $user->id,
+            'photo'   => 'nullable|image|max:2048',
+        ]);
+
+        $data = $request->only('name', 'username');
+
+        if ($request->hasFile('photo')) {
+            if ($user->photo) {
+                Storage::disk('public')->delete($user->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
     public function logout(Request $request)
