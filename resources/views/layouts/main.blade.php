@@ -20,10 +20,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
     </button>
-    <nav class="nav-menu md:items-center gap-6 font-nunito bg-white w-full md:w-auto shrink-0 flex-col md:flex-row items-start mt-5 md:mt-0">
-      <a href="/">Home</a>
-      <a href="/stories">Stories</a>
-    </nav>
+    <x-nav></x-nav>
     <div class="auth-group gap-6 font-nunito w-full md:w-auto shrink-0 mt-5 md:mt-0">
       @auth
           <p>{{ Auth::user()->username }}</p>

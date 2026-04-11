@@ -3,22 +3,31 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/stories', [HomeController::class, 'stories']);
-Route::get('/stories/{id}', [HomeController::class, 'detailPost']);
-Route::get('/dashboard', [PostController::class, 'index']);
-Route::get('/dashboard/create', [PostController::class, 'create']);
-Route::get('/dashboard/edit', [PostController::class, 'edit']);
+Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::resource('post', PostController::class);
+    });
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::post('/profile', [AuthController::class, 'profilePost'])->name('profile.post');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
+});
 
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::middleware('admin')->group(function() {
+    Route::prefix('dashboard')->group(function () {
+        Route::resource('user', UserController::class);
+    });
+});
 
-Route::get('/register', [AuthController::class, 'register']);
-
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
-
-Route::get('/profile', [AuthController::class, 'profile']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/stories', [HomeController::class, 'stories'])->name('stories');
+Route::get('/stories/{id}', [HomeController::class, 'storiesDetail'])->name('stories.show');
