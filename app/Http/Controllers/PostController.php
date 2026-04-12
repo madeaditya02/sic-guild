@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::with('category')->latest()->get();
         return view('dashboard.post.index', compact('posts'));
     }
 
@@ -55,6 +55,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $post->load('author', 'category');
         return view('dashboard.post.show', compact('post'));
     }
 
