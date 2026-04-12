@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -12,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.post.index');
+        $posts = Post::latest()->get();
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -20,7 +24,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        $categories = Category::all();
+        return view('dashboard.post.create', compact('categories'));
     }
 
     /**
@@ -28,7 +33,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'picture' => 'required|image|mimes:jpg,png|max:1024',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+        if($request->hasFile('picture')) {
+            $validated['picture'] = $request->file('picture')->store('posts', 'public');
+        }
+
+        $validated['user_id'] = Auth::id();
+
+        Post::create($validated);
+        return redirect()->route('dashboard.posts.index')->with('success', 'Post berhasil ditambahkan!');
     }
 
     /**
@@ -36,7 +55,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('dashboard.post.show');
+        return view('dashboard.post.show', compact('post'));
     }
 
     /**
@@ -44,7 +63,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.post.edit');
+        $categories = Category::all();
+        return view('dashboard.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -52,7 +72,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'picture' => 'image|mimes:jpg,png|max:1024',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+        if($request->hasFile('picture')) {
+            Storage::disk('public')->delete($post->picture);
+            $validated['picture'] = $request->file('picture')->store('posts', 'public');
+        }
+
+        $post->update($validated);
+        return redirect()->route('dashboard.posts.index')->with('success', 'Post Berhasil Diubah!');
     }
 
     /**
@@ -60,6 +93,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post->picture) {
+            Storage::disk('public')->delete($post->picture);
+        }
+
+        $post->delete();
+        return redirect()->route('dashboard.posts.index')->with('success', 'Post Berhasil Dihapus!');
     }
 }

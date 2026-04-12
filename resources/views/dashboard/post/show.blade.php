@@ -14,31 +14,31 @@
     </a>
 
     <img
-      src=""
-      alt=""
+      src="{{ Storage::url($post->picture) }}"
+      alt="{{ $post->title }}"
       class="w-full max-h-72 object-cover rounded-xl"
     >
 
-    <h1 class="text-3xl md:text-4xl font-bold mt-3 text-center">Lorem ipsum dolor sit amet.</h1>
+    <h1 class="text-3xl md:text-4xl font-bold mt-3 text-center">{{ $post->title }}</h1>
     <div class="flex gap-2.5 items-center justify-center mt-3 flex-wrap">
       <img
-        src=""
-        alt=""
+        src="{{ $post->author->photo }}"
+        alt="{{ $post->author->name }}"
         class="size-8 rounded-full object-cover"
       >
-      <span class="text-sm font-semibold text-primary">Lorem, ipsum.</span>
+      <span class="text-sm font-semibold text-primary">{{ $post->author->name }}</span>
       <div class="w-px h-4 bg-gray-300"></div>
-      <span class="text-sm text-gray-500"></span>
+      <span class="text-sm text-gray-500">{{ $post->created_at }}</span>
       <div class="w-px h-4 bg-gray-300"></div>
       <a
-        href="{{ route('stories') }}?category=1"
+        href="{{ route('stories') }}?category={{ $post->category->id }}"
         class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full hover:bg-primary/20"
       >
-        Lorem, ipsum.
+        {{ $post->category->name }}
       </a>
     </div>
     <div class="mt-8 mb-6 prose prose-lg max-w-none text-gray-700 leading-relaxed whitespace-pre-line text-justify">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, exercitationem!
+      {{ $post->content }}
     </div>
   </section>
 </main>

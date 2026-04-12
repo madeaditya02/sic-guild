@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'content',
+        'picture',
+        'category_id',
+        'user_id'
+    ];
     
     public function author()
     {
